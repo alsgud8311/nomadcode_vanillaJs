@@ -1,17 +1,16 @@
-const title = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+const HIDDEN_CLASSNAME = "hidden"
 
-console.dir(title);
+function onLoginSubmit(event){
+    event.preventDefault();
+    const username = loginInput.value;
+    localStorage.setItem("username",username);
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    greeting.innerText = `Hello ${username}`
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
 
-function handleTitleClick(){
-    console.log("title was clicked");    
-    title.style.color = "blue";
-}
-function HandleMouseEnter(){
-   title.innerText = "mouse is here";
-}
-function HandleMouseLeave(){
-    title.innerText = "mouse is gone";
-}
-title.addEventListener("click", handleTitleClick);
-title.addEventListener("mouseenter",HandleMouseEnter);
-title.addEventListener("mouseleave",HandleMouseLeave);
+loginForm.addEventListener("submit", onLoginSubmit);
+link.addEventListener("click",handleLinkClick);
